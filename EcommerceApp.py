@@ -90,11 +90,13 @@ class EcommerceApp:
     def export_orders_report(self, path):
         list_of_orders = self.catalog.get_list_of_orders()
 
+        print(path)
         path = path.split('\\')
         complete_path_arr = []
         for p in path:
             complete_path_arr += p.split('/')
-        complete_path = os.path.join(*complete_path_arr, 'output.csv')
+        complete_path = os.path.join(*complete_path_arr)
+        print(complete_path)
         with open(complete_path, 'w', newline='') as f:
             writer = csv.writer(f)
             for procedure in list_of_orders:
